@@ -1,10 +1,10 @@
-const express = require('express');
+const app = require('./core/app');
 
 async function main() {
-    const app = express();
+    const api = app();
 
-    app.listen(4000, () => {
-        console.log('Server is running on port 4000');
+    return api.listen(4000, () => {
+        console.log('Server started on port 4000');
     });
 }
 
