@@ -1,10 +1,13 @@
 const app = require('./core/app');
+const appConfig = require('./core/config');
 
 async function main() {
-    const api = app();
+    const api = await app();
 
-    return api.listen(4000, () => {
-        console.log('Server started on port 4000');
+    return api.listen(appConfig.port, () => {
+        console.log(
+            `Server started on port ${appConfig.port} (http://localhost:${appConfig.port})`
+        );
     });
 }
 
