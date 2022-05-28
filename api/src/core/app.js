@@ -1,6 +1,8 @@
 const express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const morgan = require('morgan');
+const cors = require('cors');
 const passport = require('./passport');
 const db = require('./db');
 const appConfig = require('./config');
@@ -14,11 +16,25 @@ const mainRouter = require('../routes');
 const app = async () => {
     const app = express();
 
+    // Await for database connection
     await db();
 
+    // Parsing Middlewares
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 
+    // Request Logging Middleware
+    app.use(morgan('dev'));
+
+    // CORS Middleware
+    app.use(
+        cors({
+            origin: appConfig.clientUrl,
+            credentials: true,
+        })
+    );
+
+    // Session Middleware
     app.use(
         session({
             secret: appConfig.secret,
@@ -30,9 +46,11 @@ const app = async () => {
         })
     );
 
+    // Passport Middleware
     app.use(passport.initialize());
     app.use(passport.session());
 
+    // Routes
     app.use('/api', mainRouter);
 
     return app;
