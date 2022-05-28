@@ -17,11 +17,6 @@ const userSchema = new Schema({
     },
     birthday: Date,
     biography: String,
-    postCount: {
-        type: Number,
-        default: 0,
-        min: 0,
-    },
 });
 
 const UserModel = model('User', userSchema);
