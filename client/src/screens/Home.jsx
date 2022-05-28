@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import authService from '../lib/api/auth';
+import { AuthContext } from '../lib/providers/auth';
 import rebbitLogo from '../rebbitLogo.png';
 
 const Home = () => {
+    const { isAuthenticated } = useContext(AuthContext);
+
     return (
         <div className="max-w-[1000px] mx-auto px-8 flex  justify-center h-full text-[#EC7357]">
+            <p>
+                {isAuthenticated
+                    ? "You're logged in."
+                    : "You're not logged in."}
+            </p>
+            <button onClick={login}>Login</button>
             <h2>
                 {' '}
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero
