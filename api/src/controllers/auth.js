@@ -40,8 +40,35 @@ const register = async (req, res) => {
     }
 };
 
+/**
+ *
+ * @param {express.Request} req
+ * @param {express.Response} res
+ */
+const signout = async (req, res) => {
+    try {
+        req.logout((err) => {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Error signing out.',
+                });
+            }
+
+            return res.status(200).json({
+                message: 'User signed out.',
+            });
+        });
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({
+            message: 'Something went wrong.',
+        });
+    }
+};
+
 const authController = {
     register,
+    signout,
 };
 
 module.exports = authController;
