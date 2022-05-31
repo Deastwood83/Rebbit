@@ -1,5 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { FaBars } from 'react-icons/fa';
+import { Link, useLocation } from 'react-router-dom';
 import rebbitLogo from '../rebbitLogo.png';
 
 const classNames = (...args) => {
@@ -7,11 +8,16 @@ const classNames = (...args) => {
 };
 
 const Navbar = () => {
-    const isRouteActive = (path) => {};
+    const location = useLocation();
+
+    const isRouteActive = (path) => {
+        return location.pathname === path;
+    };
+    const [toggle, setToggle] = useState(false);
 
     return (
-        <nav className="bg-emerald-800 shadow-lg py-4">
-            <div className="mx-auto container flex items-center justify-between">
+        <nav className="bg-emerald-800 shadow-lg px-4 py-4">
+            <div className="mx-auto container flex flex-wrap items-center justify-between">
                 <Link className="inline-flex items-center" to="/home">
                     <img
                         className="h-20 w-auto"
@@ -22,11 +28,73 @@ const Navbar = () => {
                     />
                     <span className="text-xl text-white font-bold">Rebbit</span>
                 </Link>
-                <div>
-                    <ul className="flex flex-col md:flex-row justify-between items-center gap-4">
+                <button
+                    className="inline-block md:hidden text-lg text-white"
+                    onClick={() => setToggle((t) => !t)}
+                >
+                    <FaBars />
+                </button>
+                <ul className="hidden md:flex justify-between items-center gap-4">
+                    <li>
+                        <Link
+                            className={classNames(
+                                isRouteActive('/home')
+                                    ? 'text-white'
+                                    : 'text-gray-300  hover:text-white',
+                                'text-lg'
+                            )}
+                            to={'/home'}
+                        >
+                            Home
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            className={classNames(
+                                isRouteActive('/users')
+                                    ? 'text-white'
+                                    : 'text-gray-300  hover:text-white',
+                                'text-lg'
+                            )}
+                            to={'/users'}
+                        >
+                            Users
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            className={classNames(
+                                isRouteActive('/profile')
+                                    ? 'text-white'
+                                    : 'text-gray-300  hover:text-white',
+                                'text-lg'
+                            )}
+                            to={'/profile'}
+                        >
+                            Profile
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            className="inline-flex justify-center px-4 py-2 shadow-sm text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none"
+                            to={'/profile'}
+                        >
+                            New Post
+                        </Link>
+                    </li>
+                </ul>
+            </div>
+            {toggle && (
+                <div className="md:hidden mt-4 mx-auto container">
+                    <ul className="px-2 flex flex-col md:hidden gap-4">
                         <li>
                             <Link
-                                className="text-gray-100 text-lg hover:text-white"
+                                className={classNames(
+                                    isRouteActive('/home')
+                                        ? 'text-white'
+                                        : 'text-gray-300  hover:text-white',
+                                    'text-lg'
+                                )}
                                 to={'/home'}
                             >
                                 Home
@@ -34,7 +102,12 @@ const Navbar = () => {
                         </li>
                         <li>
                             <Link
-                                className="text-gray-100 text-lg hover:text-white"
+                                className={classNames(
+                                    isRouteActive('/users')
+                                        ? 'text-white'
+                                        : 'text-gray-300  hover:text-white',
+                                    'text-lg'
+                                )}
                                 to={'/users'}
                             >
                                 Users
@@ -42,7 +115,12 @@ const Navbar = () => {
                         </li>
                         <li>
                             <Link
-                                className="text-gray-100 text-lg hover:text-white"
+                                className={classNames(
+                                    isRouteActive('/profile')
+                                        ? 'text-white'
+                                        : 'text-gray-300  hover:text-white',
+                                    'text-lg'
+                                )}
                                 to={'/profile'}
                             >
                                 Profile
@@ -50,7 +128,7 @@ const Navbar = () => {
                         </li>
                         <li>
                             <Link
-                                className="bg-green-600 hover:bg-green-700 transition-colors px-4 py-2 text-lg font-medium text-white rounded-lg shadow-lg"
+                                className="inline-flex justify-center px-4 py-2 shadow-sm text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none"
                                 to={'/profile'}
                             >
                                 New Post
@@ -58,7 +136,7 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </div>
-            </div>
+            )}
         </nav>
     );
 };

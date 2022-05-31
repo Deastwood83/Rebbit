@@ -10,6 +10,7 @@ import { AuthProvider } from './lib/providers/auth';
 import useUser from './lib/hooks/useUser';
 import Users from './screens/Users';
 import Profile from './screens/Profile';
+import UserDetails from './screens/UserDetails';
 
 function App() {
     const { user, isAuthenticated } = useUser();
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/home" element={<Home />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/users" element={<Users />} />
+                <Route path="/users/:username" element={<UserDetails />} />
                 <Route path="/profile" element={<Profile />} />
             </Routes>
         </AuthProvider>

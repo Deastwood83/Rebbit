@@ -1,23 +1,31 @@
 import React from 'react';
 import md5 from 'md5';
+import { FaBirthdayCake } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
-const UserCard = ({ email, username }) => {
+const UserCard = ({ email, username, biography }) => {
     const getAvatarUrl = (email) => {
         // Generate Gravatar URL
         return `https://www.gravatar.com/avatar/${md5(email)}`;
     };
 
     return (
-        <div className="basis-1/3 bg-gray-100 hover:bg-white rounded-lg p-4">
-            <div className="container mx-auto flex gap-4">
-                <div>
-                    <img src={getAvatarUrl(email)} alt={'avatar'} />
-                </div>
-                <div>
-                    <h1 className="text-lg">{username}</h1>
-                </div>
+        <Link
+            to={`/users/${username}`}
+            className="relative rounded-lg bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:bg-gray-100"
+        >
+            <div className="flex-shrink-0">
+                <img
+                    className="h-12 w-12 rounded-full"
+                    src={getAvatarUrl(email)}
+                    alt=""
+                />
             </div>
-        </div>
+            <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-gray-900">{username}</p>
+                <p className="text-sm text-gray-500 truncate">{biography}</p>
+            </div>
+        </Link>
     );
 };
 
