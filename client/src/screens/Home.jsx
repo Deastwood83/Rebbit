@@ -6,8 +6,6 @@ import rebbitLogo from '../rebbitLogo.png';
 const Home = () => {
     const { isAuthenticated } = useContext(AuthContext);
 
-    const login = () => {};
-
     return (
         <div className="max-w-[1000px] mx-auto px-8 flex  justify-center h-full text-[#EC7357]">
             <p>
@@ -15,7 +13,6 @@ const Home = () => {
                     ? "You're logged in."
                     : "You're not logged in."}
             </p>
-            <button onClick={login}>Login</button>
             <h2>
                 {' '}
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero
