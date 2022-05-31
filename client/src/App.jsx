@@ -14,7 +14,7 @@ function App() {
     return (
         <AuthProvider value={{ user, isAuthenticated }}>
             <Routes>
-                <Route path="" element={<Home />} />
+                <Route path="/" element={<Home />} />
                 <Route path="/register" element={<Register />} />
             </Routes>
         </AuthProvider>

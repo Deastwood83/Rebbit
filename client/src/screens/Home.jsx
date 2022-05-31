@@ -6,6 +6,8 @@ import rebbitLogo from '../rebbitLogo.png';
 const Home = () => {
     const { isAuthenticated } = useContext(AuthContext);
 
+    const login = () => {};
+
     return (
         <div className="max-w-[1000px] mx-auto px-8 flex  justify-center h-full text-[#EC7357]">
             <p>
