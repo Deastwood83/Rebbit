@@ -3,7 +3,7 @@ import React from 'react';
 function Register() {
     return (
        
-        <div class="h-screen bg-gradient-to-br from-emerald-800  flex justify-center items-center w-full">
+        <div class="h-screen bg-gradient-to-br from-emerald-800 to-green-800 flex justify-center items-center w-full">
           <form>
             <div class="bg-white px-10 py-8 rounded-xl w-screen shadow-md max-w-sm">
               <div class="space-y-4">
