@@ -1,8 +1,15 @@
 import React from "react";
-
+import Logo from "../rebbitLogo.png";
 function Register() {
   return (
-    <div class="h-screen bg-gradient-to-br from-emerald-800 to-green-700   flex justify-center items-center w-full">
+
+    <div class="h-screen bg-gradient-to-br from-emerald-800 to-green-700 flex justify-center items-center w-full">
+             <div className="inline-flex items-center">
+                <img
+                  src="https://cdn.discordapp.com/attachments/979149570992918538/981002974593703961/RebbitLogo.png"
+                  class="mx-auto"
+                />
+                </div>
       <form>
         <div class="bg-white px-10 py-8 rounded-xl w-screen shadow-md max-w-sm">
           <div class="space-y-4">
