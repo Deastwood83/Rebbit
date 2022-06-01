@@ -52,9 +52,11 @@ function Login() {
               </button>
               <p class="text-center font-extrabold">
                 Don&rsquo;t have an account?{" "}
-                <a class="text-yellow-400 hover:underline" href="#">
+                <Link 
+                to= {'/register'} 
+                class="text-yellow-400 hover:underline">
                   Sign up
-                </a>
+                </Link>
               </p>
             </form>
           </div>
