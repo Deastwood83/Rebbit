@@ -7,7 +7,7 @@ const initialState = {
     isAuthenticated: false,
 };
 
-const loginAsync = createAsyncThunk(
+export const loginAsync = createAsyncThunk(
     'auth/login',
     async ({ username, password }, thunkApi) => {
         try {
@@ -20,7 +20,7 @@ const loginAsync = createAsyncThunk(
     }
 );
 
-const registerAsync = createAsyncThunk(
+export const registerAsync = createAsyncThunk(
     'auth/register',
     async ({ email, username, password }, thunkApi) => {
         try {
@@ -38,10 +38,27 @@ const registerAsync = createAsyncThunk(
     }
 );
 
+export const fetchUserStatusAsync = createAsyncThunk(
+    'auth/fetchUserStatus',
+    async (dispatch) => {
+        const user = await authService.status();
+        dispatch(setUser(user));
+    }
+);
+
 const authSlice = createSlice({
     name: 'auth',
     initialState,
-    reducers: {},
+    reducers: {
+        setUser: (state, action) => {
+            state.user = action.payload;
+            if (action.payload) {
+                state.isAuthenticated = true;
+            } else {
+                state.isAuthenticated = false;
+            }
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(loginAsync.pending, (state, action) => {
@@ -49,11 +66,12 @@ const authSlice = createSlice({
             })
             .addCase(loginAsync.rejected, (state, action) => {
                 state.loading = 'idle';
-                state.error = action.payload;
+                state.isAuthenticated = false;
             })
             .addCase(loginAsync.fulfilled, (state, action) => {
                 state.loading = 'idle';
                 state.user = action.payload;
+                state.isAuthenticated = true;
             });
 
         builder
@@ -63,10 +81,12 @@ const authSlice = createSlice({
             .addCase(registerAsync.fulfilled, (state, action) => {
                 state.loading = 'idle';
                 state.user = action.payload;
+                state.isAuthenticated = true;
             })
             .addCase(registerAsync.rejected, (state, action) => {
                 state.loading = 'idle';
                 state.error = action.payload;
+                state.isAuthenticated = false;
             });
     },
 });

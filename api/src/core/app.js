@@ -19,6 +19,8 @@ const app = async () => {
     // Await for database connection
     await db();
 
+    app.disable('x-powered-by');
+
     // Parsing Middlewares
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
@@ -52,6 +54,12 @@ const app = async () => {
 
     // Routes
     app.use('/api', mainRouter);
+
+    // app.use('*', (req, res) => {
+    //     return res.status(404).json({
+    //         message: 'Not Found',
+    //     });
+    // });
 
     return app;
 };

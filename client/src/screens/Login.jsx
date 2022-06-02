@@ -1,8 +1,38 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { loginAsync } from '../lib/store/reducers/auth';
 import Logo from '../rebbitLogo.png';
 
 function Login() {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    const dispatch = useDispatch();
+    const { user, isAuthenticated } = useSelector((state) => state.auth);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/home');
+        }
+    }, [isAuthenticated]);
+
+    const onLogin = (e) => {
+        e.preventDefault();
+        if (!password || !username) {
+            return;
+        }
+
+        dispatch(
+            loginAsync({
+                username,
+                password,
+            })
+        );
+    };
+
     return (
         <div className="h-screen bg-emerald-800">
             <section class="py-26">
@@ -28,7 +58,7 @@ function Login() {
                                 Sign in
                             </h2>
                         </div>
-                        <form action="">
+                        <form onSubmit={onLogin}>
                             <div class="mb-6">
                                 <label class="block mb-2 font-extrabold" for="">
                                     Username
@@ -37,6 +67,10 @@ function Login() {
                                     class="inline-block w-full p-4 leading-6 text-lg font-extrabold placeholder-indigo-900 bg-white shadow border-2 border-indigo-900 rounded"
                                     type="text"
                                     placeholder="Username"
+                                    value={username}
+                                    onChange={(e) =>
+                                        setUsername(e.target.value)
+                                    }
                                 />
                             </div>
                             <div class="mb-6">
@@ -47,6 +81,10 @@ function Login() {
                                     class="inline-block w-full p-4 leading-6 text-lg font-extrabold placeholder-indigo-900 bg-white shadow border-2 border-indigo-900 rounded"
                                     type="password"
                                     placeholder="**********"
+                                    onChange={(e) =>
+                                        setPassword(e.target.value)
+                                    }
+                                    value={password}
                                 />
                             </div>
                             <div class="flex flex-wrap -mx-4 mb-6 items-center justify-between">

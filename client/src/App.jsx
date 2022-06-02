@@ -6,8 +6,17 @@ import Users from './screens/Users';
 import Profile from './screens/Profile';
 import UserDetails from './screens/UserDetails';
 import NewPost from './screens/NewPost';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchUserStatusAsync } from './lib/store/reducers/auth';
 
 function App() {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchUserStatusAsync());
+    }, []);
+
     return (
         <Routes>
             <Route path="/" element={<Login />} />

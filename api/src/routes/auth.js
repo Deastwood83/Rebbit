@@ -1,15 +1,11 @@
 const { Router } = require('express');
 const passport = require('passport');
-const appConfig = require('../core/config');
 const authController = require('../controllers/auth');
 
 const authRouter = Router();
 
 authRouter.post('/login', passport.authenticate('local'), (req, res) => {
-    return res.status(200).json({
-        message: 'Login successful',
-        user: req.user,
-    });
+    return res.status(200).json(req.user);
 });
 
 authRouter.post('/register', authController.register);
