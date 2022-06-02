@@ -1,14 +1,8 @@
 import React from 'react';
-import md5 from 'md5';
-import { FaBirthdayCake } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { getGravatarUrl } from '../../lib/utils/gravatar';
 
 const UserCard = ({ email, username, biography }) => {
-    const getAvatarUrl = (email) => {
-        // Generate Gravatar URL
-        return `https://www.gravatar.com/avatar/${md5(email)}`;
-    };
-
     return (
         <Link
             to={`/users/${username}`}
@@ -17,7 +11,7 @@ const UserCard = ({ email, username, biography }) => {
             <div className="flex-shrink-0">
                 <img
                     className="h-12 w-12 rounded-full"
-                    src={getAvatarUrl(email)}
+                    src={getGravatarUrl(email)}
                     alt=""
                 />
             </div>

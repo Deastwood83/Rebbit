@@ -1,13 +1,12 @@
-import {createSlice} from "@reduxjs/toolkit"
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     isLoading: false,
     users: null,
-
-}
+};
 
 const userSlice = createSlice({
-    name: "users",
+    name: 'users',
     initialState,
-})
-export default userSlice.reducer
+});
+export default userSlice.reducer;

@@ -11,6 +11,7 @@ import useUser from './lib/hooks/useUser';
 import Users from './screens/Users';
 import Profile from './screens/Profile';
 import UserDetails from './screens/UserDetails';
+import NewPost from './screens/NewPost';
 
 function App() {
     const { user, isAuthenticated } = useUser();
@@ -24,6 +25,8 @@ function App() {
                 <Route path="/users" element={<Users />} />
                 <Route path="/users/:username" element={<UserDetails />} />
                 <Route path="/profile" element={<Profile />} />
+
+                <Route path="/posts/new" element={<NewPost />} />
             </Routes>
         </AuthProvider>
     );
