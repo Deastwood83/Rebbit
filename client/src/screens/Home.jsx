@@ -1,12 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import AppLayout from '../components/AppLayout';
 import authService from '../lib/api/auth';
-import { AuthContext } from '../lib/providers/auth';
 import rebbitLogo from '../rebbitLogo.png';
 
 const Home = () => {
-    const { isAuthenticated } = useContext(AuthContext);
-
     return (
         <AppLayout>
             <div className="max-w-[1000px] mx-auto px-8 flex  justify-center h-full text-[#EC7357]">

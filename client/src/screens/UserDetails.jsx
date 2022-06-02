@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import md5 from 'md5';
 import AppLayout from '../components/AppLayout';
-import { FaMailBulk, FaPhone } from 'react-icons/fa';
+import { getGravatarUrl } from '../lib/utils/gravatar';
 
 const UserDetails = () => {
     const params = useParams();
@@ -15,11 +14,6 @@ const UserDetails = () => {
     };
 
     const username = params.username;
-
-    const getGravatarUrl = (email) => {
-        // Generate Gravatar URL
-        return `https://www.gravatar.com/avatar/${md5(email)}`;
-    };
 
     useEffect(() => {
         console.log('UserDetails: ', username);

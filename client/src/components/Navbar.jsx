@@ -77,7 +77,7 @@ const Navbar = () => {
                     <li>
                         <Link
                             className="inline-flex justify-center px-4 py-2 shadow-sm text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none"
-                            to={'/profile'}
+                            to={'/posts/new'}
                         >
                             New Post
                         </Link>
@@ -129,7 +129,7 @@ const Navbar = () => {
                         <li>
                             <Link
                                 className="inline-flex justify-center px-4 py-2 shadow-sm text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none"
-                                to={'/profile'}
+                                to={'/posts/new'}
                             >
                                 New Post
                             </Link>
