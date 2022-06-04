@@ -9,15 +9,13 @@ function Login() {
     const [password, setPassword] = useState('');
 
     const dispatch = useDispatch();
-    const { user, isAuthenticated, error, loading } = useSelector(
-        (state) => state.auth
-    );
+    const { isAuthenticated, error } = useSelector((state) => state.auth);
 
     const navigate = useNavigate();
 
     useEffect(() => {
         if (isAuthenticated) {
-            navigate('/home');
+            navigate('/');
         }
     }, [isAuthenticated]);
 
@@ -57,7 +55,7 @@ function Login() {
                                 </span>
                             </div>
                             <h2 className="text-3xl md:text-4xl font-extrabold mb-2">
-                                Sign in - {loading}
+                                Sign in
                             </h2>
                         </div>
                         {error && (

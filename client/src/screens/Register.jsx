@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { registerAsync } from '../lib/store/reducers/auth';
 import Logo from '../rebbitLogo.png';
 function Register() {
@@ -8,7 +9,15 @@ function Register() {
     const [email, setEmail] = React.useState('');
 
     const dispatch = useDispatch();
-    const { user, isAuthenticated } = useSelector((state) => state.auth);
+    const { user, isAuthenticated, error } = useSelector((state) => state.auth);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/');
+        }
+    }, [isAuthenticated]);
 
     const onRegister = (e) => {
         e.preventDefault();
@@ -39,6 +48,13 @@ function Register() {
                         <h1 class="text-center text-2xl font-semibold text-gray-600">
                             Register
                         </h1>
+                        {error && (
+                            <div>
+                                <p className="text-red-500 text-center">
+                                    {error}
+                                </p>
+                            </div>
+                        )}
                         <div>
                             <label
                                 for="email"

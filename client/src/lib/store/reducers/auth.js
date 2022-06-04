@@ -15,13 +15,15 @@ export const loginAsync = createAsyncThunk(
         try {
             const user = await authService.login(username, password);
 
-            return thunkApi.rejectWithValue('Invalid credentials');
+            if (!user._id || !user.username || !user.email) {
+                return thunkApi.rejectWithValue('Invalid user data.');
+            }
 
-            return user;
+            return thunkApi.fulfillWithValue(user);
         } catch (err) {
             const message = getErrorMessage(err);
 
-            thunkApi.rejectWithValue(message);
+            return thunkApi.rejectWithValue(message);
         }
     }
 );
@@ -37,11 +39,15 @@ export const registerAsync = createAsyncThunk(
                 new Date()
             );
 
-            return user;
+            if (!user._id || !user.username || !user.email) {
+                return thunkApi.rejectWithValue('Invalid user data.');
+            }
+
+            return thunkApi.fulfillWithValue(user);
         } catch (err) {
             const message = getErrorMessage(err);
 
-            thunkApi.rejectWithValue(message);
+            return thunkApi.rejectWithValue(message);
         }
     }
 );

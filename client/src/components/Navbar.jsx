@@ -22,7 +22,7 @@ const UserDropdown = () => {
                     <span className="sr-only">Open user menu</span>
                     <img
                         className="h-10 w-10 rounded-full"
-                        src={getGravatarUrl(user.email)}
+                        src={getGravatarUrl(user?.email ?? 'test@test.com')}
                         alt=""
                     />
                 </Menu.Button>
@@ -40,7 +40,7 @@ const UserDropdown = () => {
                     <Menu.Item>
                         {({ active }) => (
                             <Link
-                                to={'/signout'}
+                                to={'/profile'}
                                 className={classNames(
                                     active ? 'bg-gray-100' : '',
                                     'block py-2 px-4 text-base text-gray-700'
@@ -79,16 +79,10 @@ const Navbar = () => {
 
     const dispatch = useDispatch();
 
-    const onSignout = async () => {
-        await authService.signout();
-
-        dispatch(reset());
-    };
-
     return (
         <nav className="bg-emerald-800 shadow-lg px-4 py-4">
             <div className="mx-auto container flex flex-wrap items-center justify-between">
-                <Link className="inline-flex items-center" to="/home">
+                <Link className="inline-flex items-center" to="/">
                     <img
                         className="h-20 w-auto"
                         src={
@@ -108,12 +102,12 @@ const Navbar = () => {
                     <li>
                         <Link
                             className={classNames(
-                                isRouteActive('/home')
+                                isRouteActive('/')
                                     ? 'text-white'
                                     : 'text-gray-300  hover:text-white',
                                 'text-lg'
                             )}
-                            to={'/home'}
+                            to={'/'}
                         >
                             Home
                         </Link>
@@ -135,15 +129,14 @@ const Navbar = () => {
                         <UserDropdown />
                     </li>
                     <li>
-                        <button
-                            onClick={onSignout}
+                        <Link
                             className={
                                 'text-lg text-gray-300  hover:text-white'
                             }
-                            to={'/profile'}
+                            to={'/signout'}
                         >
                             Sign out
-                        </button>
+                        </Link>
                     </li>
                     <li>
                         <Link

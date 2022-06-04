@@ -11,28 +11,19 @@ import { useDispatch } from 'react-redux';
 import authService from './lib/api/auth';
 import { setUser } from './lib/store/reducers/auth';
 import { getErrorMessage } from './lib/utils/api';
+import Signout from './screens/Signout';
 
 function App() {
     const dispatch = useDispatch();
-
-    const navigate = useNavigate();
-    const location = useLocation();
-
     useEffect(() => {
         const fetchUser = async () => {
-            try {
-                const user = await authService.status();
-                dispatch(setUser(user));
-            } catch (err) {
-                const message = getErrorMessage(err);
+            const user = await authService.status();
 
-                if (message === 'Unauthorized') {
-                    dispatch(setUser(null));
-                    if (location.pathname !== '/login') {
-                        navigate('/login');
-                    }
-                }
+            if (!user._id || !user.username || !user.email) {
+                return;
             }
+
+            dispatch(setUser(user));
         };
 
         fetchUser();
@@ -43,6 +34,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/signout" element={<Signout />} />
+
             <Route path="/users" element={<Users />} />
             <Route path="/users/:username" element={<UserDetails />} />
             <Route path="/profile" element={<Profile />} />
