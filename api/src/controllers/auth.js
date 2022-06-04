@@ -34,9 +34,19 @@ const register = async (req, res) => {
             biography: '',
         });
 
-        return res.status(201).json(newUser);
+        return req.login(newUser, (err) => {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Something went wrong.',
+                });
+            }
+
+            return res.status(201).json(newUser);
+        });
     } catch (err) {
-        console.log(err);
+        return res.status(500).json({
+            message: 'Something went wrong.',
+        });
     }
 };
 
