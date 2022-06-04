@@ -1,39 +1,39 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { loginAsync } from "../lib/store/reducers/auth";
-import Logo from "../rebbitLogo.png";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { loginAsync } from '../lib/store/reducers/auth';
+import Logo from '../rebbitLogo.png';
 
 function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
     const dispatch = useDispatch();
     const { user, isAuthenticated, error, loading } = useSelector(
         (state) => state.auth
     );
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/home");
-    }
-  }, [isAuthenticated]);
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/home');
+        }
+    }, [isAuthenticated]);
 
-  const onLogin = (e) => {
-    e.preventDefault();
-    if (!password || !username) {
-      return;
-    }
+    const onLogin = (e) => {
+        e.preventDefault();
+        if (!password || !username) {
+            return;
+        }
 
-    dispatch(
-      loginAsync({
-        username,
-        password,
-      })
-    );
-  };
+        dispatch(
+            loginAsync({
+                username,
+                password,
+            })
+        );
+    };
 
     return (
         <div className="h-screen bg-emerald-800">
@@ -122,8 +122,10 @@ function Login() {
                             </p>
                         </form>
                     </div>
-
-);
+                </div>
+            </section>
+        </div>
+    );
 }
 
 export default Login;
