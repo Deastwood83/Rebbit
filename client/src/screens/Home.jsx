@@ -7,11 +7,6 @@ const Home = () => {
     return (
         <AppLayout>
             <div className="max-w-[1000px] mx-auto px-8 flex  justify-center h-full text-[#EC7357]">
-                <p>
-                    {isAuthenticated
-                        ? "You're logged in."
-                        : "You're not logged in."}
-                </p>
                 <h2>
                     {' '}
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit.
