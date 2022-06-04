@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import Home from './screens/Home';
 import Register from './screens/Register';
 import Login from './screens/Login';
@@ -8,20 +8,34 @@ import UserDetails from './screens/UserDetails';
 import NewPost from './screens/NewPost';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchUserStatusAsync } from './lib/store/reducers/auth';
+import authService from './lib/api/auth';
+import { setUser } from './lib/store/reducers/auth';
+import { getErrorMessage } from './lib/utils/api';
+import Signout from './screens/Signout';
 
 function App() {
     const dispatch = useDispatch();
-
     useEffect(() => {
-        dispatch(fetchUserStatusAsync());
+        const fetchUser = async () => {
+            const user = await authService.status();
+
+            if (!user._id || !user.username || !user.email) {
+                return;
+            }
+
+            dispatch(setUser(user));
+        };
+
+        fetchUser();
     }, []);
 
     return (
         <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/signout" element={<Signout />} />
+
             <Route path="/users" element={<Users />} />
             <Route path="/users/:username" element={<UserDetails />} />
             <Route path="/profile" element={<Profile />} />

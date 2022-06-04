@@ -1,8 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import AuthRequired from '../screens/AuthRequired';
 import Navbar from './Navbar';
 
 const AppLayout = ({ children }) => {
-    return (
+    const { isAuthenticated } = useSelector((state) => state.auth);
+
+    return isAuthenticated ? (
         <div>
             <header>
                 <Navbar />
@@ -11,6 +15,8 @@ const AppLayout = ({ children }) => {
                 <div className="px-2 py-4">{children}</div>
             </main>
         </div>
+    ) : (
+        <AuthRequired />
     );
 };
 
