@@ -30,7 +30,7 @@ const UserDetails = () => {
                 </div>
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
-                        <div className="flex">
+                    <div className="flex">
                             <img
                                 className="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32"
                                 src={getGravatarUrl(user.email)}
@@ -51,7 +51,37 @@ const UserDetails = () => {
                         </h1>
                     </div>
                 </div>
+                <div class=" rounded-b-lg p-5 pt-20 flex flex-col">
+            <div class="mb-1 bg-gray-200 border border-gray-300 h-5 w-40"></div>
+            <div class="mb-1 bg-gray-200 border border-gray-300 h-5 w-96"></div>
+            <div class="text-sm mt-2 text-gray-200">
+              
             </div>
+
+            
+            <div class="py-5 break-all ">
+               
+                <div class="mb-1 bg-gray-200 border border-gray-300 h-5 w-full h-40"></div>
+            </div>
+        </div>
+                <div className="containter px-20">
+        <div className="bg-white p-8 rounded-lg shadow-lg relative hover:shadow-2xl transition duration-500">
+          <h1 className="text-2xl text-gray-800 font-semibold mb-3">
+            Create basic card for you.
+          </h1>
+          <p className="text-gray-600 leading-6 tracking-normal">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
+            itaque debitis saepe, eaque similique quo doloribus ducimus ex
+            veniam accusamus aliquid esse, veritatis totam quia impedit tempore
+            aperiam, doloremque eius.
+          </p>
+
+          <div></div>
+        </div>
+        </div>
+        </div>
+        
+        
         </AppLayout>
     );
 };
