@@ -49,37 +49,28 @@ const UserDetails = () => {
                         <h1 className="text-2xl font-bold text-gray-900 truncate">
                             {user.username}
                         </h1>
+                        
                     </div>
-                </div>
-                <div class=" rounded-b-lg p-5 pt-20 flex flex-col">
-            <div class="mb-1 bg-gray-200 border border-gray-300 h-5 w-40"></div>
-            <div class="mb-1 bg-gray-200 border border-gray-300 h-5 w-96"></div>
-            <div class="text-sm mt-2 text-gray-200">
-              
+                    <div class=" rounded-b-lg p-5 pt-15 flex flex-col">
+            <div class="mb-1 bg-gray-200 border border-gray-300 h-5 w-40">
+                Test
             </div>
-
-            
-            <div class="py-5 break-all ">
-               
-                <div class="mb-1 bg-gray-200 border border-gray-300 h-5 w-full h-40"></div>
+            <div class="mb-1 bg-gray-200 border border-gray-300 h-10 w-16">
+                Tes
+            </div>
+            </div>
+             
+            <div class="pt-20 break-all max-width-max">
+            <div class="my-5 bg-gray-200 border border-gray-300 max-w-5xl "> Test</div>
+                <div class="my-5 bg-gray-200 border border-gray-300 max-w-5xl "> Test</div>
+                <div class="my-5 bg-gray-200 border border-gray-300 max-w-5xl "> Test</div>
+                <div class="my-5 bg-gray-200 border border-gray-300 max-w-5xl "> Test</div>
             </div>
         </div>
-                <div className="containter px-20">
-        <div className="bg-white p-8 rounded-lg shadow-lg relative hover:shadow-2xl transition duration-500">
-          <h1 className="text-2xl text-gray-800 font-semibold mb-3">
-            Create basic card for you.
-          </h1>
-          <p className="text-gray-600 leading-6 tracking-normal">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
-            itaque debitis saepe, eaque similique quo doloribus ducimus ex
-            veniam accusamus aliquid esse, veritatis totam quia impedit tempore
-            aperiam, doloremque eius.
-          </p>
-
-          <div></div>
+                
         </div>
-        </div>
-        </div>
+        
+       
         
         
         </AppLayout>
