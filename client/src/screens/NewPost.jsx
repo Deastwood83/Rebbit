@@ -1,10 +1,18 @@
 import React from 'react';
 import AppLayout from '../components/AppLayout';
-
+import rebbitLogo from '../rebbitLogo.png'; 
 const NewPost = () => {
     return (
         <AppLayout>
             <div className="container mx-auto max-w-[400px] bg-emerald-800 p-6 rounded-l-lg rounded-r-lg">
+            <div className="flex items-center">
+                                                <img
+                                                className="h-10 w-auto"
+                                                src={rebbitLogo}
+                                                alt="Rebbit Logo"
+                                                />
+                            
+            </div>
                 <form method= 'POST'  className="flex flex-col ">
                     <div>
                         <label class= 'text-white'> Title <span class= 'text-red-500'> * </span> </label>
