@@ -40,7 +40,7 @@ const UserDropdown = () => {
                     <Menu.Item>
                         {({ active }) => (
                             <Link
-                                to={'/profile'}
+                                to={'/profilesettings'}
                                 className={classNames(
                                     active ? 'bg-gray-100' : '',
                                     'block py-2 px-4 text-base text-gray-700'
