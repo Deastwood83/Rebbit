@@ -3,7 +3,7 @@ import Home from './screens/Home';
 import Register from './screens/Register';
 import Login from './screens/Login';
 import Users from './screens/Users';
-import Profile from './screens/Profile';
+import ProfileSettings from './screens/ProfileSettings';
 import UserDetails from './screens/UserDetails';
 import NewPost from './screens/NewPost';
 import { useEffect } from 'react';
@@ -38,7 +38,7 @@ function App() {
 
             <Route path="/users" element={<Users />} />
             <Route path="/users/:username" element={<UserDetails />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profilesettings" element={<ProfileSettings />} />
 
             <Route path="/posts/new" element={<NewPost />} />
         </Routes>
