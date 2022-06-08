@@ -180,14 +180,14 @@ const Navbar = () => {
                         <li>
                             <Link
                                 className={classNames(
-                                    isRouteActive('/profile')
+                                    isRouteActive('/profilesettings')
                                         ? 'text-white'
                                         : 'text-gray-300  hover:text-white',
                                     'text-lg'
                                 )}
-                                to={'/profile'}
+                                to={'/profilesettings'}
                             >
-                                Profile
+                                Profile Settings
                             </Link>
                         </li>
                         <li>
