@@ -1,22 +1,22 @@
-const { Router } = require("express");
-const postCommentController = require("../controllers/Post-comment");
+const { Router } = require('express');
+const postCommentController = require('../controllers/Post-comment');
 
 const PostRouter = Router();
 
-PostRouter.get("/", postCommentController.GetAllPosts);
+PostRouter.get('/', postCommentController.GetAllPosts);
 
-PostRouter.get("/comments", postCommentController.GetAllComments);
+PostRouter.get('/:postId/comments', postCommentController.GetAllComments);
 
-PostRouter.get("/:id", postCommentController.GetPostById);
+PostRouter.get('/:id', postCommentController.GetPostById);
 
-PostRouter.get("/comments/:id", postCommentController.GetCommentById);
+PostRouter.get('/:postId/comments/:id', postCommentController.GetCommentById);
 
-PostRouter.post("/", postCommentController.CreatePost);
+PostRouter.post('/', postCommentController.CreatePost);
 
-PostRouter.post("/comments", postCommentController.CreateComment);
+PostRouter.post('/:postId/comments', postCommentController.CreateComment);
 
-PostRouter.delete("/:id", postCommentController.DeletePost);
+PostRouter.delete('/:id', postCommentController.DeletePost);
 
-PostRouter.delete("/comments/:id", postCommentController.DeleteComment);
+PostRouter.delete('/:postId/comments/:id', postCommentController.DeleteComment);
 
 module.exports = PostRouter;

@@ -12,8 +12,6 @@ const login = async (username, password) => {
         password,
     });
 
-    console.log(`Login status: ${resp.status}`);
-
     if (resp.status === 401) {
         throw new Error('Invalid credentials');
     }
