@@ -31,8 +31,24 @@ const ProfileSettings = () => {
                                         <h1 className="text-2xl font-bold">Username</h1>
                                         <h2 className="text-2 font-Arial items-center">This is an example of a bio, pay no attention to the nonsense being typed into this area.</h2>
                                     <div className="flex">
-                                        <h2 className=""></h2>
                                     </div>
+                                </div>
+                                <div className="flex p-4">
+                                <h2 className="text-xl font-bold">General</h2>
+                                </div>
+                                <div className="flex flex-col px-8">
+                                <h3 className="text-2 font-arial">Change Username</h3>
+                                <input
+                                type="text"
+                                className="bg-indigo-50 px-4 py-2 outline-none rounded-md w-full"
+                                placeholder="Current Username"
+                                />
+                                <h3 className="text-2 font-arial">Change Password</h3>
+                                <input
+                                type="text"
+                                className="bg-indigo-50 px-4 py-2 outline-none rounded-md w-full"
+                                placeholder="************"
+                                />
                                 </div>
                             </div> 
                 </div>
