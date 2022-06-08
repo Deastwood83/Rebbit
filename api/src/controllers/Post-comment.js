@@ -2,6 +2,12 @@ const express = require("express");
 const Post = require("../models/Post");
 const Comment = require("../models/Comment");
 
+/**
+ *
+ * @param {express.Request} req
+ * @param {express.Response} res
+ */
+
 const GetAllPosts = async (req, res) => {
   try {
     const Posts = await Post.find().lean();
@@ -75,11 +81,61 @@ const CreatePost = async (req, res) => {
   }
 };
 
+const CreateComment = async (req, res) => {
+  try {
+    const { content } = req.body;
+
+    const newComment = await Comment.create({
+      content,
+    });
+
+    return res.json(newComment);
+  } catch (err) {
+    res.status(500).json({
+      message: "Something went wrong",
+    });
+  }
+};
+
+const DeleteComment = async (req, res) => {
+  try {
+    const Id = req.params.id;
+    const comment = await Comment.findById(Id);
+    await comment.remove();
+    return res.json({
+      message: "Comment deleted",
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: "Something went wrong",
+    });
+  }
+};
+
+const DeletePost = async (req, res) => {
+  try {
+    const Id = req.params.id;
+    const post = await Post.findById(Id);
+    await post.remove();
+    return res.json({
+      message: "Post deleted",
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: "Something went wrong",
+    });
+  }
+};
+
 const postCommentController = {
   GetAllPosts,
   GetAllComments,
   GetPostById,
   GetCommentById,
+  CreatePost,
+  CreateComment,
+  DeleteComment,
+  DeletePost,
 };
 
 module.exports = postCommentController;
