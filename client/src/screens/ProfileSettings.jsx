@@ -50,6 +50,12 @@ const ProfileSettings = () => {
                 className="bg-indigo-50 px-4 py-2 outline-none rounded-md w-full"
                 placeholder="************"
               />
+              <h3 className="text-2 font-arial">Change Bio</h3>
+              <input
+                type="text"
+                className="bg-indigo-50 px-4 py-2 outline-none rounded-md w-full"
+                placeholder="My Bio"
+              />
             </div>
           </div>
         </div>
