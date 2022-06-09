@@ -130,16 +130,6 @@ const Navbar = () => {
                     </li>
                     <li>
                         <Link
-                            className={
-                                'text-lg text-gray-300  hover:text-white'
-                            }
-                            to={'/signout'}
-                        >
-                            Sign out
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
                             className="inline-flex justify-center px-4 py-2 shadow-sm text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none"
                             to={'/posts/new'}
                         >
