@@ -2,9 +2,13 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import AppLayout from "../components/AppLayout";
 import { getGravatarUrl } from "../lib/utils/gravatar";
+import Post from "../components/Post";
+import { fetchPostsAsync } from '../lib/store/reducers/posts';
+import { useDispatch, useSelector } from 'react-redux';
 
 const UserDetails = () => {
   const params = useParams();
+  const { loading, posts } = useSelector((state) => state.posts);
 
   const user = {
     username: "AnomolyAvery",
@@ -50,35 +54,29 @@ const UserDetails = () => {
               {user.username}
             </h1>
           </div>
-          <div class=" rounded-b-lg p-5 pt-15 flex flex-col">
-            <div class="mb-1 bg-gray-200 border border-gray-300 h-5 w-40">
+          <div className=" rounded-b-lg p-5 pt-15 flex flex-col">
+            <div className="mb-1 bg-gray-200 border border-gray-300 h-5 w-40">
               Test
             </div>
-            <div class="mb-1 bg-gray-200 border border-gray-300 h-10 w-16">
+            <div className="mb-1 bg-gray-200 border border-gray-300 h-10 w-16">
               Tes
             </div>
           </div>
 
-          <div class="pt-20 break-all max-width-max">
-            <div class="my-5 bg-gray-200 border border-gray-300 max-w-5xl ">
-              {" "}
-              Test
-            </div>
-            <div class="my-5 bg-gray-200 border border-gray-300 max-w-5xl ">
-              {" "}
-              Test
-            </div>
-            <div class="my-5 bg-gray-200 border border-gray-300 max-w-5xl ">
-              {" "}
-              Test
-            </div>
-            <div class="my-5 bg-gray-200 border border-gray-300 max-w-5xl ">
-              {" "}
-              Test
+          <div className="pt-20 break-all max-width-max flex flex-wrap justify-between">
+          <div className="flex flex-col justify-between">
+                    {loading === 'pending' && (
+                        <div className="text-center">
+                            <h1>Loading...</h1>
+                        </div>
+                    )}
+
+                    {posts && posts.map((post) => <Post post={post} />)}
+                </div>
             </div>
           </div>
         </div>
-      </div>
+    
     </AppLayout>
   );
 };
