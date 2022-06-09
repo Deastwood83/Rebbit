@@ -8,7 +8,7 @@ const ProfileSettings = () => {
   const { user, error } = useSelector((state) => state.auth);
   return (
     <AppLayout>
-      <div className="bg-gray-100 rounded">
+      <div className="bg-gray-200 rounded">
         <div className="container mx-auto p-4">
           <div className="flex-shrink-0">
             <div className="flex justify-between items-center px-6 py-2">
@@ -38,28 +38,22 @@ const ProfileSettings = () => {
               <h2 className="text-xl font-bold">General</h2>
             </div>
             <div className="flex flex-col px-8">
-              <h3 className="text-2 font-arial">Change Username</h3>
-              <input
-                type="text"
-                className="bg-indigo-50 px-4 py-2 outline-none rounded-md w-full"
-                placeholder="Current Username"
-              />
               <h3 className="text-2 font-arial">Change Password</h3>
               <input
                 type="text"
-                className="bg-indigo-50 px-4 py-2 outline-none rounded-md w-full"
+                className="bg-gray-100 px-4 py-2 outline-none rounded-md w-full"
                 placeholder="************"
               />
               <h3 className="text-2 font-arial">Change Bio</h3>
               <input
                 type="text"
-                className="bg-indigo-50 px-4 py-2 outline-none rounded-md w-full"
+                className="bg-gray-100 px-4 py-2 outline-none rounded-md w-full"
                 placeholder="My Bio"
               />
               <h3 className="text-2 font-arial">Add Birthday</h3>
               <input
                 type="date"
-                className="bg-indigo-50 px-4 py-2 outline-none rounded-md w-full"
+                className="bg-gray-100 px-4 py-2 outline-none rounded-md w-full"
                 />
             </div>
           </div>
