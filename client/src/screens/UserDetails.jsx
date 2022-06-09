@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import AppLayout from "../components/AppLayout";
 import { getGravatarUrl } from "../lib/utils/gravatar";
-import Post from "../components/Post";
+import Post from "../components/PostCard";
 import { fetchPostsAsync } from '../lib/store/reducers/posts';
 import { useDispatch, useSelector } from 'react-redux';
+import PostCard from "../components/PostCard";
 
 const UserDetails = () => {
   const params = useParams();
@@ -71,7 +72,7 @@ const UserDetails = () => {
                         </div>
                     )}
 
-                    {posts && posts.map((post) => <Post post={post} />)}
+                    {posts && posts.map((post) => <PostCard post={post} />)}
                 </div>
             </div>
           </div>

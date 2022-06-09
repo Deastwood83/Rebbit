@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Post({ post }) {
+function PostCard({ post }) {
     return (
         <div>
             <div className="containter px-16">
@@ -17,4 +17,4 @@ function Post({ post }) {
     );
 }
 
-export default Post;
+export default PostCard;
