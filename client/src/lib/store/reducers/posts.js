@@ -59,7 +59,7 @@ export const createPostAsync = createAsyncThunk(
 );
 
 export const deletePostAsync = createAsyncThunk(
-    'post/deletePost',
+    'posts/deletePost',
     async (id, thunkApi) => {
         try {
             const msg = await postsService.deletePost(id);

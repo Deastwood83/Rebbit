@@ -6,6 +6,7 @@ import Users from "./screens/Users";
 import ProfileSettings from "./screens/ProfileSettings";
 import UserDetails from "./screens/UserDetails";
 import NewPost from "./screens/NewPost";
+import Posts from "./screens/Posts";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import authService from "./lib/api/auth";
@@ -39,7 +40,7 @@ function App() {
       <Route path="/users" element={<Users />} />
       <Route path="/users/:username" element={<UserDetails />} />
       <Route path="/profilesettings" element={<ProfileSettings />} />
-
+      <Route path="/posts/:id" element={<Posts/>}/>
       <Route path="/posts/new" element={<NewPost />} />
     </Routes>
   );
