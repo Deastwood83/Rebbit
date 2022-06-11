@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AppLayout from '../components/AppLayout';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import posts, {
+import {
     deletePostAsync,
     fetchPostByIdAsync,
 } from '../lib/store/reducers/posts';

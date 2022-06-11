@@ -5,7 +5,6 @@ import AppLayout from '../components/AppLayout';
 import {
     createPostAsync,
     resetCreatePostId,
-    resetError,
 } from '../lib/store/reducers/posts';
 import rebbitLogo from '../rebbitLogo.png';
 const NewPost = () => {
