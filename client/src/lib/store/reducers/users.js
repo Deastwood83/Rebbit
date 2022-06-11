@@ -55,14 +55,16 @@ const userSlice = createSlice({
             state.error = action.payload;
         });
 
-        builder.addCase(fetchUserByIdAsync.pending, (state, action) => {
+        builder.addCase(fetchUserByUsernameAsync.pending, (state, action) => {
             state.isLoading = true;
         });
-        builder.addCase(fetchUserByIdAsync.fulfilled, (state, action) => {
+
+        builder.addCase(fetchUserByUsernameAsync.fulfilled, (state, action) => {
             state.isLoading = false;
             state.user = action.payload;
         });
-        builder.addCase(fetchUserByIdAsync.rejected, (state, action) => {
+
+        builder.addCase(fetchUserByUsernameAsync.rejected, (state, action) => {
             state.isLoading = false;
             state.error = action.payload;
         });
