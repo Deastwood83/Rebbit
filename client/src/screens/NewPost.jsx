@@ -2,10 +2,16 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import AppLayout from '../components/AppLayout';
-import { createPostAsync, resetError } from '../lib/store/reducers/posts';
+import {
+    createPostAsync,
+    resetCreatePostId,
+    resetError,
+} from '../lib/store/reducers/posts';
 import rebbitLogo from '../rebbitLogo.png';
 const NewPost = () => {
-    const { post, loading, error } = useSelector((state) => state.posts);
+    const { createdPostId, loading, error } = useSelector(
+        (state) => state.posts
+    );
 
     const dispatch = useDispatch();
 
@@ -15,14 +21,11 @@ const NewPost = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (post) {
-            navigate(`/posts/${post._id}`);
+        if (createdPostId) {
+            navigate(`/posts/${createdPostId}`);
+            dispatch(resetCreatePostId());
         }
-
-        return () => {
-            dispatch(resetError());
-        };
-    }, [post]);
+    }, [createdPostId]);
 
     const onSubmit = (e) => {
         e.preventDefault();

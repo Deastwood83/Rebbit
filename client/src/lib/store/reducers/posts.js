@@ -6,6 +6,7 @@ const initialState = {
     loading: 'idle',
     posts: null,
     post: null,
+    createdPostId: null,
     error: null,
     message: null,
 };
@@ -80,6 +81,9 @@ const postsSlice = createSlice({
         resetPost: (state) => {
             state.post = null;
         },
+        resetCreatePostId: (state) => {
+            state.createdPostId = null;
+        },
         resetError: (state) => {
             state.error = null;
         },
@@ -117,7 +121,8 @@ const postsSlice = createSlice({
             })
             .addCase(createPostAsync.fulfilled, (state, action) => {
                 state.loading = 'idle';
-                state.post = action.payload;
+                state.createdPostId = action.payload._id;
+                state.posts = [...state.posts, action.payload];
             })
             .addCase(createPostAsync.rejected, (state, action) => {
                 state.loading = 'idle';
@@ -139,6 +144,6 @@ const postsSlice = createSlice({
     },
 });
 
-export const { resetPost, resetError } = postsSlice.actions;
+export const { resetPost, resetError, resetCreatePostId } = postsSlice.actions;
 
 export default postsSlice.reducer;

@@ -37,7 +37,7 @@ const Home = () => {
                 </div>
             </div>
             <div>
-                <div className="flex flex-col justify-between">
+                <div className="flex gap-4 flex-col justify-between">
                     {loading === 'pending' && (
                         <div className="text-center">
                             <h1>Loading...</h1>
