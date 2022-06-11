@@ -37,6 +37,19 @@ const UserDropdown = () => {
                 leaveTo="transform opacity-0 scale-95"
             >
                 <Menu.Items className="origin-top-right absolute z-10 right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none">
+                <Menu.Item>
+                        {({ active }) => (
+                            <Link
+                            to={`/users/${user?.username ?? ''}`}
+                                className={classNames(
+                                    active ? 'bg-gray-100' : '',
+                                    'block py-2 px-4 text-base text-gray-700'
+                                )}
+                            >
+                                My Page
+                            </Link>
+                        )}
+                    </Menu.Item>
                     <Menu.Item>
                         {({ active }) => (
                             <Link
@@ -46,7 +59,7 @@ const UserDropdown = () => {
                                     'block py-2 px-4 text-base text-gray-700'
                                 )}
                             >
-                                Profile
+                                Profile Settings
                             </Link>
                         )}
                     </Menu.Item>
