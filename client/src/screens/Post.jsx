@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AppLayout from '../components/AppLayout';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import posts, {
     deletePostAsync,
     fetchPostByIdAsync,
@@ -38,9 +38,12 @@ const Post = () => {
                             {post?.title}
                         </h1>
                         <div className="flex items-center justify-between text-xl font-bold mb-6">
-                            <div className="flex italic items-center text-emerald-700 hover:text-[#50E021]">
-                                {post?.owner.username}
-                            </div>
+                            <Link
+                                to={`/users/${post?.owner?.username}`}
+                                className="flex italic items-center text-emerald-700 hover:text-[#50E021]"
+                            >
+                                {post?.owner?.username}
+                            </Link>
                         </div>
                     </header>
 
