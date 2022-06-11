@@ -27,10 +27,9 @@ const ProfileSettings = () => {
                 src={getGravatarUrl(user?.email ?? "tas@tas.com")}
                 alt="User's Profile Picture"
               />
-              <h1 className="text-2xl font-bold">Username</h1>
+              <h1 className="text-2xl font-bold">{user?.username}</h1>
               <h2 className="text-2 font-Arial items-center">
-                This is an example of a bio, pay no attention to the nonsense
-                being typed into this area.
+                {user?.biography}
               </h2>
               <div className="flex"></div>
             </div>

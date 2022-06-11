@@ -53,11 +53,11 @@ const UserDetails = () => {
             </h1>
           </div>
           <div className=" rounded-b-lg p-5 pt-15 flex flex-col">
-            <div className="mb-1 bg-gray-200 border border-gray-300 h-5 w-40">
-              {user?.bio}
+            <div className="flex bg-gray-200 w-20 items-center rounded">
+              {new Date(user?.createdAt).toLocaleDateString() }
             </div>
-            <div className="mb-1 bg-gray-200 border border-gray-300 h-10 w-16">
-              Tes
+            <div className="flex bg-gray-200">
+              {user?.biography}
             </div>
           </div>
 
