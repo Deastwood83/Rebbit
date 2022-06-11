@@ -51,7 +51,7 @@ const Post = () => {
                 </div>
               </article>
               <button
-                className="mt-4 w-full bg-gradient-to-tr from-emerald-800  to-green-700  text-yellow-300 py-2 rounded-md text-lg tracking-wide"
+                className="mt-4 w-full bg-gradient-to-tr text-yellow-300 font-extrabold bg-green-700 hover:bg-yellow-300 hover:text-green-700 border-3 border-indigo-900 rounded transition duration-200 py-2 rounded-md text-lg"
                 onClick={onDelete}
               >
                 Delete
