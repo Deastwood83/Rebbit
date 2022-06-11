@@ -11,6 +11,11 @@ const commentSchema = new Schema({
     required: true,
     max: 255,
   },
+  post: {
+    type: Schema.Types.ObjectId,
+    ref: "Post",
+    required: true,
+  },
 });
 
 const CommentModel = model("Comment", commentSchema);
