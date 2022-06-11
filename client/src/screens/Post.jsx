@@ -30,8 +30,7 @@ const Post = () => {
 
   return (
     <AppLayout>
-      <div className="pt-16 overflow-hidden">
-        <div className="absolute h-20 w-full mt-64 bg-zig-zag z-0 hidden md:block"></div>
+      <div className="pt-16 overflow-x-hidden">
         <div className="max-w-6xl mx-auto px-4">
           <header className="font-mono">
             <h1 className="text-4xl leading-tight font-black text-emerald-700 font-bold mb-3">
@@ -39,14 +38,14 @@ const Post = () => {
             </h1>
             <div className="flex items-center justify-between text-xl font-bold mb-6">
               <div className="flex italic items-center text-emerald-700 hover:text-[#50E021]">
-                {post?.user}
+                {post?.owner.username}
               </div>
             </div>
           </header>
 
           <div className="flex flex-wrap">
             <div className="w-full md:w-2/3 relative">
-              <article className="mb-8 bg-emerald-400 border shadow-zinc-700 p-6 pb-0 relative z-10">
+              <article className="mb-8 text-2xl bg-emerald-400 border shadow-zinc-700 p-6 pb-0 relative z-10">
                 <div className="markdown">
                   <p>{post?.content}</p>
                 </div>
