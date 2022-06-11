@@ -53,14 +53,15 @@ const UserDetails = () => {
             </h1>
           </div>
           <div className=" rounded-b-lg p-5 pt-15 flex flex-col">
+            <div className="flex flex-col bg-gray-200 w-20 rounded">
+              {(user?.email) }
+            
+          <div className=" rounded-b-lg p-5 pt-15 flex flex-col">
             <div className="flex bg-gray-200 w-20 items-center rounded">
               {new Date(user?.createdAt).toLocaleDateString() }
             </div>
-            <div className="flex bg-gray-200">
-              {user?.biography}
-            </div>
           </div>
-
+          </div>
           <div className="pt-20 break-all max-width-max flex flex-wrap justify-between">
           <div className="flex flex-col justify-between">
                     {/* {loading === 'pending' && (
@@ -74,7 +75,7 @@ const UserDetails = () => {
             </div>
           </div>
         </div>
-    
+      </div>
     </AppLayout>
   );
 };
