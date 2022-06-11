@@ -23,11 +23,11 @@ export const fetchUsersAsync = createAsyncThunk(
     }
 );
 
-export const fetchUserByIdAsync = createAsyncThunk(
-    'users/fetchUserById',
-    async (id, thunkApi) => {
+export const fetchUserByUsernameAsync = createAsyncThunk(
+    'users/fetchUserByUsername',
+    async (username, thunkApi) => {
         try {
-            const user = await usersService.getById(id);
+            const user = await usersService.getByUsername(username);
 
             return thunkApi.fulfillWithValue(user);
         } catch (err) {

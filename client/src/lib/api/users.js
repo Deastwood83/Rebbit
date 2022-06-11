@@ -6,15 +6,15 @@ const getAll = async () => {
     return resp.data;
 };
 
-const getById = async (id) => {
-    const resp = await apiClient.get(`/users/${id}`);
+const getByUsername = async (username) => {
+    const resp = await apiClient.get(`/users/username/${username}`);
 
     return resp.data;
 };
 
 const usersService = {
     getAll,
-    getById,
+    getByUsername,
 };
 
 export default usersService;
