@@ -12,14 +12,16 @@ const AppLayout = ({ children }) => {
     const creators = ['Avery', 'Austin', 'Daniel', 'Moses', 'Tyler'];
 
     return isAuthenticated ? (
-        <div className="relative">
-            <header>
-                <Navbar />
-            </header>
-            <main className="container mx-auto">
-                <div className="px-2 py-4">{children}</div>
-            </main>
-            <footer className="fixed bottom-0 w-full">
+        <div className="min-h-full flex flex-col">
+            <div className="flex-initial">
+                <header>
+                    <Navbar />
+                </header>
+                <main className="container mx-auto">
+                    <div className="px-2 py-4">{children}</div>
+                </main>
+            </div>
+            <footer className="flex-shrink">
                 <div className="bg-emerald-800 px-4 py-5">
                     <div className="container mx-auto">
                         <div className="flex items-center justify-between">
