@@ -50,11 +50,6 @@ const ProfileSettings = () => {
                 className="bg-gray-100 px-4 py-2 outline-none rounded-md w-full"
                 placeholder="My Bio"
               />
-              <h3 className="text-2 font-arial">Add Birthday</h3>
-              <input
-                type="date"
-                className="bg-gray-100 px-4 py-2 outline-none rounded-md w-full"
-                />
             </div>
           </div>
         </div>
