@@ -9,36 +9,14 @@ import Navbar from './Navbar';
 const AppLayout = ({ children }) => {
     const { isAuthenticated } = useSelector((state) => state.auth);
 
-    const creators = ['Avery', 'Austin', 'Daniel', 'Moses', 'Tyler'];
-
     return isAuthenticated ? (
-        <div className="min-h-full flex flex-col">
-            <div className="flex-initial">
-                <header>
-                    <Navbar />
-                </header>
-                <main className="container mx-auto">
-                    <div className="px-2 py-4">{children}</div>
-                </main>
-            </div>
-            <footer className="flex-shrink">
-                <div className="bg-emerald-800 px-4 py-5">
-                    <div className="container mx-auto">
-                        <div className="flex items-center justify-between">
-                            <Link to={'/'}>
-                                <img src={RebbitLogo} alt="Footer logo" />
-                            </Link>
-                            <div className="flex-shrink">
-                                <p className="text-white text-xl">
-                                    Created with{' '}
-                                    <FaHeart className="inline-block self-center h-5 w-5 text-red-500 mx-1" />{' '}
-                                    by {creators.join(', ') + '.'}{' '}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+        <div>
+            <header>
+                <Navbar />
+            </header>
+            <main className="container mx-auto">
+                <div className="px-2 py-4">{children}</div>
+            </main>
         </div>
     ) : (
         <AuthRequired />
