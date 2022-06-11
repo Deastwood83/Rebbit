@@ -18,16 +18,6 @@ const Home = () => {
 
     return (
         <AppLayout>
-            <div className="max-w-[1000px] mx-auto px-8 flex  justify-center h-full text-[#EC7357]">
-                <p></p>
-                <h2>
-                    {' '}
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Libero maxime dolores, ea consectetur est ipsum possimus
-                    quia itaque soluta perspiciatis alias nihil, sed
-                    voluptatibus commodi recusandae. Nihil velit veritatis
-                    omnis.
-                </h2>
                 <div className="flex flex-wrap items-center justify-center">
                     <img
                         src={rebbitLogo}
@@ -35,7 +25,6 @@ const Home = () => {
                         className="mx-auto"
                     />
                 </div>
-            </div>
             <div>
                 <div className="flex gap-4 flex-col justify-between">
                     {loading === 'pending' && (
