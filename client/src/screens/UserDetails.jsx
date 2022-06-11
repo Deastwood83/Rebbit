@@ -6,22 +6,19 @@ import Post from "../components/PostCard";
 import { fetchPostsAsync } from '../lib/store/reducers/posts';
 import { useDispatch, useSelector } from 'react-redux';
 import PostCard from "../components/PostCard";
+import { fetchUserByUsernameAsync } from "../lib/store/reducers/users";
 
 const UserDetails = () => {
   const params = useParams();
-  const { loading, posts } = useSelector((state) => state.posts);
 
-  const user = {
-    username: "AnomolyAvery",
-    email: "ashawsolutions@gmail.csm",
-    biography: "This is just a test",
-    birthday: new Date("2003-02-26"),
-  };
+  const { user } = useSelector((state) => state.users);
+
+  const dispatch = useDispatch();
 
   const username = params.username;
 
   useEffect(() => {
-    console.log("UserDetails: ", username);
+    dispatch(fetchUserByUsernameAsync(username));
   }, [username]);
 
   return (
@@ -38,26 +35,26 @@ const UserDetails = () => {
             <div className="flex">
               <img
                 className="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32"
-                src={getGravatarUrl(user.email)}
+                src={getGravatarUrl(user?.email ?? 'test@test.com')}
                 alt=""
               />
             </div>
             <div className="mt-6 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
               <div className="sm:hidden md:block mt-4 min-w-0 flex-1">
                 <h1 className="text-2xl font-bold text-gray-900 truncate">
-                  {user.username}
+                  {user?.username}
                 </h1>
               </div>
             </div>
           </div>
           <div className="hidden sm:block md:hidden mt-4 min-w-0 flex-1">
             <h1 className="text-2xl font-bold text-gray-900 truncate">
-              {user.username}
+              {user?.username}
             </h1>
           </div>
           <div className=" rounded-b-lg p-5 pt-15 flex flex-col">
             <div className="mb-1 bg-gray-200 border border-gray-300 h-5 w-40">
-              Test
+              {user?.bio}
             </div>
             <div className="mb-1 bg-gray-200 border border-gray-300 h-10 w-16">
               Tes
@@ -66,13 +63,13 @@ const UserDetails = () => {
 
           <div className="pt-20 break-all max-width-max flex flex-wrap justify-between">
           <div className="flex flex-col justify-between">
-                    {loading === 'pending' && (
+                    {/* {loading === 'pending' && (
                         <div className="text-center">
                             <h1>Loading...</h1>
                         </div>
                     )}
 
-                    {posts && posts.map((post) => <PostCard post={post} />)}
+                    {posts && posts.map((post) => <PostCard post={post} />)} */}
                 </div>
             </div>
           </div>
