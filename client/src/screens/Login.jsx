@@ -42,6 +42,7 @@ function Login() {
         />
         <span className="text-5xl text-white font-bold mr-10">Rebbit</span>
       </div>
+        <form onSubmit={onLogin}>
       <div class="bg-white px-10 py-8 rounded-xl w-screen shadow-md max-w-sm">
         <div class="space-y-4">
           <h1 class="text-center text-2xl font-semibold text-gray-600">
@@ -52,7 +53,7 @@ function Login() {
               <p className="text-red-500 text-center">{error}</p>
             </div>
           )}
-
+       
           <div>
             <label
               htmlFor=""
@@ -82,9 +83,11 @@ function Login() {
             />
           </div>
         </div>
+      
         <button className="inline-block w-full py-4 px-6 mb-6 text-center text-lg leading-6 text-yellow-300 font-extrabold bg-green-700 hover:bg-yellow-300 hover:text-green-700 border-3 border-indigo-900 shadow rounded transition duration-200">
           Sign in
         </button>
+
         <p className="text-center font-extrabold">
           Don&rsquo;t have an account?{" "}
           <Link to={"/register"} className="text-yellow-400 hover:underline">
@@ -92,7 +95,10 @@ function Login() {
           </Link>
         </p>
       </div>
+      </form>
     </div>
+    
+    
   );
 }
 
