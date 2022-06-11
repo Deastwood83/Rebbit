@@ -18,13 +18,6 @@ const Home = () => {
 
     return (
         <AppLayout>
-                <div className="flex flex-wrap items-center justify-center">
-                    <img
-                        src={rebbitLogo}
-                        alt="Rebbit Logo"
-                        className="mx-auto"
-                    />
-                </div>
             <div>
                 <div className="flex gap-4 flex-col justify-between">
                     {loading === 'pending' && (
