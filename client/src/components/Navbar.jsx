@@ -2,10 +2,7 @@ import React, { useState, Fragment } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, Popover, Transition } from '@headlessui/react';
-import authService from '../lib/api/auth';
-import { reset } from '../lib/store/reducers/auth';
-import rebbitLogo from '../rebbitLogo.png';
+import { Menu, Transition } from '@headlessui/react';
 import { getGravatarUrl } from '../lib/utils/gravatar';
 
 const classNames = (...args) => {
@@ -37,10 +34,10 @@ const UserDropdown = () => {
                 leaveTo="transform opacity-0 scale-95"
             >
                 <Menu.Items className="origin-top-right absolute z-10 right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none">
-                <Menu.Item>
+                    <Menu.Item>
                         {({ active }) => (
                             <Link
-                            to={`/users/${user?.username ?? ''}`}
+                                to={`/users/${user?.username ?? ''}`}
                                 className={classNames(
                                     active ? 'bg-gray-100' : '',
                                     'block py-2 px-4 text-base text-gray-700'
