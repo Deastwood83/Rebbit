@@ -52,14 +52,14 @@ const app = async () => {
     app.use(passport.initialize());
     app.use(passport.session());
 
+    app.use(express.static('../../../client/dist'));
+
     // Routes
     app.use('/api', mainRouter);
 
-    // app.use('*', (req, res) => {
-    //     return res.status(404).json({
-    //         message: 'Not Found',
-    //     });
-    // });
+    app.use('*', (req, res) => {
+        res.sendFile('../../../client/dist/index.html');
+    });
 
     return app;
 };
