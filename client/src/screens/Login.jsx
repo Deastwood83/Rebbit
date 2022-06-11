@@ -55,20 +55,20 @@ function Login() {
             )}
             
             <div>
-              <label htmlFor="" Username class="block mb-1 text-gray-600 font-semibold">
-               
+              <label htmlFor="" class="block mb-1 text-gray-600 font-semibold">
+               Username
               </label>
               <input
                 type="text"
                 class="bg-indigo-50 px-4 py-2 outline-none rounded-md w-full"
-		placeholder="Username"
+		
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
             </div>
            
             <div>
-            <label className="block mb-2 font-extrabold" htmlFor="">
+            <label className="block mb-1 text-gray-600 font-semibold" htmlFor="">
                   Password
                 </label>
                 <input
