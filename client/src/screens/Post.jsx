@@ -33,6 +33,16 @@ const Post = () => {
         <AppLayout>
             <div className="pt-16 overflow-x-hidden">
                 <div className="max-w-6xl mx-auto px-4">
+                    {post?.owner?._id.toString() === user._id.toString() && (
+                        <div className="mb-4">
+                            <Link
+                                to={`/posts/${postId}/edit`}
+                                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                            >
+                                Edit
+                            </Link>
+                        </div>
+                    )}
                     <header className="font-mono">
                         <h1 className="text-4xl leading-tight font-black text-emerald-700 font-bold mb-3">
                             {post?.title}

@@ -74,6 +74,25 @@ export const deletePostAsync = createAsyncThunk(
     }
 );
 
+export const updatePostAsync = createAsyncThunk(
+    'posts/updatePost',
+    async (post, thunkApi) => {
+        try {
+            const updatedPost = await postsService.updatePost(
+                post.id,
+                post.title,
+                post.content
+            );
+
+            return thunkApi.fulfillWithValue(updatedPost);
+        } catch (err) {
+            const msg = getErrorMessage(err);
+
+            return thunkApi.rejectWithValue(msg);
+        }
+    }
+);
+
 const postsSlice = createSlice({
     name: 'posts',
     initialState,
@@ -138,6 +157,19 @@ const postsSlice = createSlice({
                 state.message = action.payload;
             })
             .addCase(deletePostAsync.rejected, (state, action) => {
+                state.loading = 'idle';
+                state.error = action.payload;
+            });
+
+        builder
+            .addCase(updatePostAsync.pending, (state) => {
+                state.loading = 'pending';
+            })
+            .addCase(updatePostAsync.fulfilled, (state, action) => {
+                state.loading = 'idle';
+                state.post = action.payload;
+            })
+            .addCase(updatePostAsync.rejected, (state, action) => {
                 state.loading = 'idle';
                 state.error = action.payload;
             });

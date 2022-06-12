@@ -1,6 +1,7 @@
 const express = require('express');
 const Post = require('../models/Post');
 const Comment = require('../models/Comment');
+const { isValidObjectId } = require('mongoose');
 
 /**
  *
@@ -136,6 +137,39 @@ const DeletePost = async (req, res) => {
     }
 };
 
+const updatePost = async (req, res) => {
+    try {
+        const id = req.params.id;
+
+        if (!isValidObjectId(id)) {
+            return res.status(400).json({
+                message: 'Invalid id',
+            });
+        }
+
+        const post = await Post.findById(id).populate('owner');
+
+        const { title, content } = req.body;
+
+        if (!title || !content) {
+            return res.status(400).json({
+                message: 'Please provide title and content',
+            });
+        }
+
+        post.title = title;
+        post.content = content;
+
+        await post.save();
+
+        return res.status(200).json(post);
+    } catch (err) {
+        res.status(500).json({
+            message: 'Something went wrong',
+        });
+    }
+};
+
 const postCommentController = {
     GetAllPosts,
     GetAllComments,
@@ -145,6 +179,7 @@ const postCommentController = {
     CreateComment,
     DeleteComment,
     DeletePost,
+    updatePost,
 };
 
 module.exports = postCommentController;

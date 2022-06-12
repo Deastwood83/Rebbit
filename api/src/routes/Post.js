@@ -9,6 +9,8 @@ PostRouter.get('/:postId/comments', postCommentController.GetAllComments);
 
 PostRouter.get('/:id', postCommentController.GetPostById);
 
+PostRouter.put('/:id', postCommentController.updatePost);
+
 PostRouter.get('/:postId/comments/:id', postCommentController.GetCommentById);
 
 PostRouter.post('/', postCommentController.CreatePost);

@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import authService from './lib/api/auth';
 import { setUser } from './lib/store/reducers/auth';
 import Signout from './screens/Signout';
+import EditPost from './screens/EditPost';
 
 function App() {
     const dispatch = useDispatch();
@@ -39,6 +40,8 @@ function App() {
             <Route path="/users" element={<Users />} />
             <Route path="/users/:username" element={<UserDetails />} />
             <Route path="/profilesettings" element={<ProfileSettings />} />
+
+            <Route path="/posts/:id/edit" element={<EditPost />} />
             <Route path="/posts/:id" element={<Post />} />
             <Route path="/posts/new" element={<NewPost />} />
         </Routes>
