@@ -154,12 +154,12 @@ const Navbar = () => {
                         <li>
                             <Link
                                 className={classNames(
-                                    isRouteActive('/home')
+                                    isRouteActive('/')
                                         ? 'text-white'
                                         : 'text-gray-300  hover:text-white',
                                     'text-lg'
                                 )}
-                                to={'/home'}
+                                to={'/'}
                             >
                                 Home
                             </Link>
