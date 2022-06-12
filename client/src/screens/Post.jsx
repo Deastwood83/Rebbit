@@ -33,7 +33,7 @@ const Post = () => {
         <AppLayout>
             <div className="pt-16 overflow-x-hidden">
                 <div className="max-w-6xl mx-auto px-4">
-                    {post?.owner?._id.toString() === user._id.toString() && (
+                    {post?.owner?._id.toString() === user?._id?.toString() && (
                         <div className="mb-4">
                             <Link
                                 to={`/posts/${postId}/edit`}
