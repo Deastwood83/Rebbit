@@ -52,6 +52,29 @@ export const registerAsync = createAsyncThunk(
     }
 );
 
+export const updateMeAsync = createAsyncThunk(
+    'auth/updateMe',
+    async (user, thunkApi) => {
+        try {
+            const updatedUser = await authService.updateMe(user);
+
+            if (
+                !updatedUser._id ||
+                !updatedUser.username ||
+                !updatedUser.email
+            ) {
+                return thunkApi.rejectWithValue('Invalid user data.');
+            }
+
+            return thunkApi.fulfillWithValue(updatedUser);
+        } catch (err) {
+            const message = getErrorMessage(err);
+
+            return thunkApi.rejectWithValue(message);
+        }
+    }
+);
+
 const authSlice = createSlice({
     name: 'auth',
     initialState,
@@ -101,6 +124,20 @@ const authSlice = createSlice({
                 state.loading = 'idle';
                 state.user = action.payload;
                 state.isAuthenticated = !!action.payload;
+                state.error = null;
+            });
+
+        builder
+            .addCase(updateMeAsync.pending, (state, action) => {
+                state.loading = 'pending';
+            })
+            .addCase(updateMeAsync.rejected, (state, action) => {
+                state.loading = 'idle';
+                state.error = action.payload;
+            })
+            .addCase(updateMeAsync.fulfilled, (state, action) => {
+                state.loading = 'idle';
+                state.user = action.payload;
                 state.error = null;
             });
     },

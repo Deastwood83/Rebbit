@@ -57,10 +57,32 @@ const signout = async () => {
     return resp.status === 200;
 };
 
+/**
+ *
+ * @param {Object} user
+ * @returns
+ */
+const updateMe = async (user) => {
+    const payload = {};
+
+    if (user.password) {
+        payload.password = user.password;
+    }
+
+    if (user.biography) {
+        payload.biography = user.biography;
+    }
+
+    const resp = await apiClient.put('/auth/me', payload);
+
+    return resp.data;
+};
+
 const authService = {
     login,
     register,
     status,
+    updateMe,
     signout,
 };
 

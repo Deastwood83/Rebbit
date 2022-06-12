@@ -16,7 +16,6 @@ const userSchema = new Schema(
             required: true,
             unique: true,
         },
-        birthday: Date,
         biography: String,
     },
     {
