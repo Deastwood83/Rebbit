@@ -21,6 +21,9 @@ const app = async () => {
 
     app.disable('x-powered-by');
 
+    // Trust proxy
+    app.set('trust proxy', 1);
+
     // Parsing Middlewares
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));

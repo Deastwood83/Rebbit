@@ -27,12 +27,11 @@ const login = async (username, password) => {
  * @param {Date} birthday
  * @returns {Object}
  */
-const register = async (email, username, password, birthday) => {
+const register = async (email, username, password) => {
     const resp = await apiClient.post('/auth/register', {
         email,
         username,
         password,
-        birthday,
     });
 
     return resp.data;

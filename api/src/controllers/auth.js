@@ -35,8 +35,6 @@ const register = async (req, res) => {
             username,
             email,
             password: hashedPassword,
-            birthday,
-            postCount: 0,
             biography: '',
         });
 
