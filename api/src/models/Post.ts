@@ -1,6 +1,12 @@
-const { Schema, model } = require('mongoose');
+import { Schema, model, Types } from "mongoose";
 
-const postSchema = new Schema({
+interface Post {
+    title: string;
+    content: string;
+    owner: Types.ObjectId;
+}
+
+const postSchema = new Schema<Post>({
     title: {
         type: String,
         required: true,
@@ -17,6 +23,6 @@ const postSchema = new Schema({
     },
 });
 
-const PostModel = model('Post', postSchema);
+const PostModel = model<Post>('Post', postSchema);
 
-module.exports = PostModel;
+export default PostModel;

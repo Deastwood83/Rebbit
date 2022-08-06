@@ -1,17 +1,19 @@
+import { Request, Response } from "express";
+
 const { isValidObjectId } = require('mongoose');
 const UserModel = require('../models/User');
 
-const getAll = async (req, res) => {
+const getAll = async (req: Request, res: Response) => {
     try {
         const users = await UserModel.find().select('-password').lean();
 
         return res.status(200).json(users);
-    } catch (err) {
-        return res.status(500).json({ message: err.message });
+    } catch (err: Error | any) {
+        return res.status(500).json({ message: err?.message ?? 'Internal Server Error' });
     }
 };
 
-const getBydId = async (req, res) => {
+const getBydId = async (req: Request, res: Response) => {
     try {
         const id = req.params.id;
 
@@ -30,14 +32,14 @@ const getBydId = async (req, res) => {
         }
 
         return res.status(200).json(user);
-    } catch (err) {
+    } catch (err: Error | any) {
         return res.status(500).json({
-            message: err.message,
+            message: err?.message ?? 'Interal Server Error',
         });
     }
 };
 
-const getByUsername = async (req, res) => {
+const getByUsername = async (req: Request, res: Response) => {
     try {
         const username = req.params.username;
 
@@ -60,9 +62,9 @@ const getByUsername = async (req, res) => {
         }
 
         return res.status(200).json(user);
-    } catch (err) {
+    } catch (err: Error | any) {
         return res.status(500).json({
-            message: err.message,
+            message: err?.message ?? 'Interal Server Error',
         });
     }
 };
@@ -73,4 +75,4 @@ const usersController = {
     getByUsername,
 };
 
-module.exports = usersController;
+export default usersController;

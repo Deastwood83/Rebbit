@@ -1,5 +1,16 @@
-const app = require('./core/app');
-const appConfig = require('./core/config');
+import app from './core/app';
+import appConfig from './core/config';
+
+declare global {
+    namespace Express {
+        interface User {
+            _id: string;
+            username: string;
+            email: string;
+        }
+    }
+}
+
 
 async function main() {
     const api = await app();

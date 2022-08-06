@@ -1,18 +1,14 @@
-const express = require('express');
-const session = require('express-session');
-const MongoStore = require('connect-mongo');
-const morgan = require('morgan');
-const cors = require('cors');
-const passport = require('./passport');
-const db = require('./db');
-const appConfig = require('./config');
-const { default: mongoose } = require('mongoose');
-const mainRouter = require('../routes');
+import express from 'express';
+import morgan from 'morgan';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import session from 'express-session';
+import MongoStore from 'connect-mongo';
+import passport from './passport';
+import db from './db';
+import mainRouter from '../routes';
+import appConfig from './config';
 
-/**
- *
- * @returns {express.Express}
- */
 const app = async () => {
     const app = express();
 
@@ -60,4 +56,4 @@ const app = async () => {
     return app;
 };
 
-module.exports = app;
+export default app;

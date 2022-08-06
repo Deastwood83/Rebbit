@@ -1,7 +1,6 @@
-const { Router } = require('express');
-const passport = require('passport');
-const authController = require('../controllers/auth');
-
+import { Router } from "express";
+import passport from "passport";
+import authController from "../controllers/auth";
 const authRouter = Router();
 
 authRouter.post('/login', passport.authenticate('local'), (req, res) => {
@@ -17,8 +16,8 @@ authRouter.get('/status', (req, res) => {
     return req.user
         ? res.status(200).json(req.user)
         : res.status(401).json({
-              message: 'Unauthorized',
-          });
+            message: 'Unauthorized',
+        });
 });
 
-module.exports = authRouter;
+export default authRouter;

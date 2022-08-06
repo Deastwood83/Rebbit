@@ -1,12 +1,7 @@
-const mongoose = require('mongoose');
-const appConfig = require('./config');
+import mongoose from "mongoose";
+import appConfig from "./config";
 
-/**
- * Connects to the configured mongo database
- *
- * @returns {Promise<void>}
- */
-const db = () => {
+const db = (): Promise<void> => {
     return new Promise((res, rej) => {
         mongoose.connect(appConfig.mongoDbUri, (err) => {
             if (err) return rej(err);
@@ -17,4 +12,4 @@ const db = () => {
     });
 };
 
-module.exports = db;
+export default db;

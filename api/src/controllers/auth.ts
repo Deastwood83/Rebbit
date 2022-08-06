@@ -1,13 +1,8 @@
-const express = require('express');
-const bcrypt = require('bcryptjs');
-const User = require('../models/User');
+import express, { Request, Response } from 'express';
+import bcrypt from 'bcryptjs';
+import UserModel from '../models/User';
 
-/**
- *
- * @param {express.Request} req
- * @param {express.Response} res
- */
-const register = async (req, res) => {
+const register = async (req: Request, res: Response) => {
     try {
         const { username, email, password } = req.body;
 
@@ -17,7 +12,7 @@ const register = async (req, res) => {
             });
         }
 
-        const user = await User.findOne({
+        const user = await UserModel.findOne({
             email,
         });
 
@@ -31,14 +26,18 @@ const register = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        const newUser = await User.create({
+        const newUser = await UserModel.create({
             username,
             email,
             password: hashedPassword,
             biography: '',
         });
 
-        return req.login(newUser, (err) => {
+        return req.login({
+            _id: newUser.id,
+            username: newUser.username,
+            email: newUser.email,
+        }, (err) => {
             if (err) {
                 return res.status(500).json({
                     message: 'Something went wrong.',
@@ -54,12 +53,8 @@ const register = async (req, res) => {
     }
 };
 
-/**
- *
- * @param {express.Request} req
- * @param {express.Response} res
- */
-const signout = async (req, res) => {
+
+const signout = async (req: Request, res: Response) => {
     try {
         req.logout((err) => {
             if (err) {
@@ -80,11 +75,11 @@ const signout = async (req, res) => {
     }
 };
 
-const updateMe = async (req, res) => {
+const updateMe = async (req: Request, res: Response) => {
     try {
         const { password, biography } = req.body;
 
-        const user = await User.findById(req.user._id);
+        const user = await UserModel.findById(req?.user?._id);
 
         if (!user) {
             return res.status(404).json({
@@ -120,4 +115,4 @@ const authController = {
     updateMe,
 };
 
-module.exports = authController;
+export default authController;

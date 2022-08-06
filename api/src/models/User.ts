@@ -1,6 +1,13 @@
-const { Schema, model } = require('mongoose');
+import { Schema, model } from "mongoose";
 
-const userSchema = new Schema(
+interface User {
+    username: string;
+    password: string;
+    email: string;
+    biography: string;
+}
+
+const userSchema = new Schema<User>(
     {
         username: {
             type: String,
@@ -23,6 +30,6 @@ const userSchema = new Schema(
     }
 );
 
-const UserModel = model('User', userSchema);
+const UserModel = model<User>('User', userSchema);
 
-module.exports = UserModel;
+export default UserModel;

@@ -35,8 +35,7 @@ export const registerAsync = createAsyncThunk(
             const user = await authService.register(
                 email,
                 username,
-                password,
-                new Date()
+                password
             );
 
             if (!user._id || !user.username || !user.email) {
